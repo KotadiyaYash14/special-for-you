@@ -4,202 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>❤️ For N ❤️</title>
-
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- Background Music -->
 <audio id="bgMusic" loop>
+    <!-- Free romantic piano music from Pixabay (no copyright) -->
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
-<div class="stars"></div>
+<!-- Animated Background Layers -->
+<div class="bg-gradient"></div>
+<div class="petals-container" id="petals"></div>
+<div class="stars-layer"></div>
+<div class="bokeh-layer"></div>
 
-<!-- Welcome Section -->
+<!-- Music Toggle -->
+<button class="music-fab" onclick="toggleMusic()" id="musicBtn" title="Toggle Music">
+    <span id="musicIcon">🎵</span>
+</button>
 
-<section id="welcome" class="page active">
+<!-- Page Dots Navigation -->
+<nav class="page-dots" id="pageDots">
+    <button class="dot active" onclick="goToPage(0)" title="Welcome">❤️</button>
+    <button class="dot" onclick="goToPage(1)" title="Teddy">🧸</button>
+    <button class="dot" onclick="goToPage(2)" title="Balloons">🎈</button>
+    <button class="dot" onclick="goToPage(3)" title="Gift">🎁</button>
+    <button class="dot" onclick="goToPage(4)" title="Candles">🕯️</button>
+    <button class="dot" onclick="goToPage(5)" title="Letter">💌</button>
+    <button class="dot" onclick="goToPage(6)" title="Gallery">📸</button>
+    <button class="dot" onclick="goToPage(7)" title="Final">✨</button>
+</nav>
 
-    <div class="glass-card">
+<!-- ===== PAGE 0: WELCOME ===== -->
+<section id="page-0" class="page active">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
 
-        <h1>❤️ For N ❤️</h1>
+        <h1 class="title-script">For N</h1>
+        <div class="heart-divider">
+            <span class="line"></span>
+            <span class="hd-heart">❤️</span>
+            <span class="line"></span>
+        </div>
+        <p class="subtitle-italic">"Every heartbeat whispers your name..."</p>
 
-        <p class="subtitle">
-            Every heartbeat whispers your name...
-        </p>
+        <div class="days-badge">
+            <div class="days-inner">
+                <span id="daysNumber" class="days-num">—</span>
+                <span class="days-label">beautiful days together</span>
+                <span class="days-since">since 15 Aug 2024</span>
+            </div>
+        </div>
 
-        <p id="daysCounter"></p>
+        <div class="btn-row">
+            <button class="btn-outline" onclick="toggleMusic()">🎵 Play Music</button>
+            <button class="btn-primary" onclick="goToPage(1)">Enter My Heart ❤️</button>
+        </div>
 
-        <button onclick="toggleMusic()" class="music-btn">
-            🎵 Play Music
-        </button>
-
-        <button onclick="nextPage('teddy')" class="main-btn">
-            Enter My Heart ❤️
-        </button>
-
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
     </div>
-
 </section>
 
-<!-- Teddy Section -->
-
-<section id="teddy" class="page">
-
-    <div class="glass-card">
-
-        <h2>🧸 Teddy Has Something To Say</h2>
+<!-- ===== PAGE 1: TEDDY ===== -->
+<section id="page-1" class="page">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">🧸 Teddy Has a Secret</h2>
+        <p class="page-sub">Tap teddy to hear what he says...</p>
 
         <img
             src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
             class="teddy"
             onclick="showTeddyMessage()"
+            alt="Teddy Bear"
         >
+        <div id="teddyMessage" class="reveal-text"></div>
 
-        <p id="teddyMessage"></p>
-
-        <button onclick="nextPage('balloons')" class="main-btn">
-            Continue 🎈
-        </button>
-
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(0)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(2)">Balloons 🎈</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
     </div>
-
 </section>
 
-<!-- Balloon Game -->
-
-<section id="balloons" class="page">
-
-    <div class="glass-card">
-
-        <h2>🎈 Pop The Balloons</h2>
-
-        <p>Each balloon hides a special message ❤️</p>
-
-        <div id="balloonArea"></div>
-
-        <button onclick="nextPage('gift')" class="main-btn">
-            Next Surprise 🎁
-        </button>
-
+<!-- ===== PAGE 2: BALLOONS ===== -->
+<section id="page-2" class="page">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">🎈 Pop The Balloons</h2>
+        <p class="page-sub">Each one hides a message just for you ❤️</p>
+        <div id="balloonArea" class="balloon-grid"></div>
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(1)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(3)">Next Surprise 🎁</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
     </div>
-
 </section>
 
-<!-- Gift Section -->
+<!-- ===== PAGE 3: GIFT ===== -->
+<section id="page-3" class="page">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">🎁 Open Your Gift</h2>
+        <p class="page-sub">Something sweet is waiting inside...</p>
+        <div class="gift-box" onclick="openGift()" id="giftBox">
+            <span class="gift-emoji">🎁</span>
+            <div class="gift-shine"></div>
+        </div>
+        <p id="giftMessage" class="gift-msg"></p>
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(2)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(4)">Light Candles 🕯️</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
+    </div>
+</section>
 
-<section id="gift" class="page">
+<!-- ===== PAGE 4: CANDLES ===== -->
+<section id="page-4" class="page">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">🕯️ Light All Candles</h2>
+        <p class="page-sub">Tap each candle to light it...</p>
+        <div class="candles-row">
+            <div class="candle-wrap" onclick="lightCandle(this)">
+                <div class="candle-flame">🔥</div>
+                <div class="candle-body">🕯️</div>
+            </div>
+            <div class="candle-wrap" onclick="lightCandle(this)">
+                <div class="candle-flame">🔥</div>
+                <div class="candle-body">🕯️</div>
+            </div>
+            <div class="candle-wrap" onclick="lightCandle(this)">
+                <div class="candle-flame">🔥</div>
+                <div class="candle-body">🕯️</div>
+            </div>
+            <div class="candle-wrap" onclick="lightCandle(this)">
+                <div class="candle-flame">🔥</div>
+                <div class="candle-body">🕯️</div>
+            </div>
+            <div class="candle-wrap" onclick="lightCandle(this)">
+                <div class="candle-flame">🔥</div>
+                <div class="candle-body">🕯️</div>
+            </div>
+        </div>
+        <p id="candleMsg" class="candle-msg"></p>
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(3)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(5)">Read My Letter 💌</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
+    </div>
+</section>
 
-    <div class="glass-card">
+<!-- ===== PAGE 5: LETTER ===== -->
+<section id="page-5" class="page">
+    <div class="card letter-card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">💌 A Letter For N</h2>
+        <div class="letter-paper">
+            <div class="letter-lines"></div>
+            <div id="letterText" class="letter-body"></div>
+            <div class="letter-seal">❤️</div>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(4)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(6)">See Memories 📸</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
+    </div>
+</section>
 
-        <h2>🎁 Open Your Gift</h2>
+<!-- ===== PAGE 6: GALLERY ===== -->
+<section id="page-6" class="page">
+    <div class="card">
+        <div class="card-glow"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h2 class="page-title">📸 Beautiful Memories</h2>
+        <p class="page-sub">Every picture tells our story...</p>
+        <div class="gallery-masonry">
+            <div class="gallery-item tall" style="--delay:0s">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&q=80" alt="Memory 1">
+                <div class="gallery-overlay"><span>❤️</span></div>
+            </div>
+            <div class="gallery-item" style="--delay:.1s">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80" alt="Memory 2">
+                <div class="gallery-overlay"><span>💕</span></div>
+            </div>
+            <div class="gallery-item" style="--delay:.2s">
+                <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&q=80" alt="Memory 3">
+                <div class="gallery-overlay"><span>✨</span></div>
+            </div>
+            <div class="gallery-item tall" style="--delay:.3s">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80" alt="Memory 4">
+                <div class="gallery-overlay"><span>🌹</span></div>
+            </div>
+            <div class="gallery-item" style="--delay:.4s">
+                <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=600&q=80" alt="Memory 5">
+                <div class="gallery-overlay"><span>💖</span></div>
+            </div>
+            <div class="gallery-item" style="--delay:.5s">
+                <img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=600&q=80" alt="Memory 6">
+                <div class="gallery-overlay"><span>🥰</span></div>
+            </div>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-ghost" onclick="goToPage(5)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(7)">Final Surprise ✨</button>
+        </div>
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
+    </div>
+</section>
 
-        <div class="gift-box" onclick="openGift()">
-            🎁
+<!-- ===== PAGE 7: FINAL ===== -->
+<section id="page-7" class="page final-page">
+    <div class="card final-card">
+        <div class="card-glow glow-gold"></div>
+        <div class="ornament top-ornament">✦ ✦ ✦</div>
+        <h1 class="title-script final-title">N</h1>
+        <div class="heart-divider">
+            <span class="line"></span>
+            <span class="hd-heart">❤️</span>
+            <span class="line"></span>
         </div>
 
-        <p id="giftMessage"></p>
+        <div class="big-heart" onclick="heartExplosion()">❤️</div>
+        <p class="click-hint">tap the heart</p>
 
-        <button onclick="nextPage('candles')" class="main-btn">
-            Light The Candles 🕯️
-        </button>
+        <div id="finalMessage" class="final-msg hidden"></div>
 
-    </div>
-
-</section>
-
-<!-- Candle Section -->
-
-<section id="candles" class="page">
-
-    <div class="glass-card">
-
-        <h2>🕯️ Light All Candles</h2>
-
-        <div class="candles">
-
-            <span class="candle" onclick="lightCandle(this)">🕯️</span>
-            <span class="candle" onclick="lightCandle(this)">🕯️</span>
-            <span class="candle" onclick="lightCandle(this)">🕯️</span>
-            <span class="candle" onclick="lightCandle(this)">🕯️</span>
-
+        <div class="nav-btns" style="margin-top:30px">
+            <button class="btn-ghost" onclick="goToPage(6)">← Back</button>
+            <button class="btn-primary" onclick="goToPage(0)">Start Again 🔄</button>
         </div>
-
-        <button onclick="nextPage('letter')" class="main-btn">
-            Read My Letter 💌
-        </button>
-
+        <div class="ornament bot-ornament">✦ ✦ ✦</div>
     </div>
-
 </section>
 
-<!-- Love Letter -->
-
-<section id="letter" class="page">
-
-    <div class="glass-card">
-
-        <h2>💌 A Letter For N</h2>
-
-        <div id="letterText"></div>
-
-        <button onclick="nextPage('gallery')" class="main-btn">
-            See Memories 📸
-        </button>
-
+<!-- Balloon Popup -->
+<div id="popupOverlay" class="popup-overlay" onclick="closePopup()">
+    <div class="popup-card" onclick="event.stopPropagation()">
+        <div class="popup-emoji" id="popupEmoji">💕</div>
+        <p id="popupText"></p>
+        <button class="btn-primary" onclick="closePopup()">Aww ❤️</button>
     </div>
-
-</section>
-
-<!-- Gallery -->
-
-<section id="gallery" class="page">
-
-    <div class="glass-card">
-
-        <h2>📸 Beautiful Memories</h2>
-
-        <div class="gallery">
-
-            <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800">
-
-            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800">
-
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
-
-        </div>
-
-        <button onclick="nextPage('final')" class="main-btn">
-            Final Surprise ❤️
-        </button>
-
-    </div>
-
-</section>
-
-<!-- Final Page -->
-
-<section id="final" class="page">
-
-    <div class="glass-card">
-
-        <h1>❤️ N ❤️</h1>
-
-        <div class="big-heart"
-             onclick="heartExplosion()">
-            ❤️
-        </div>
-
-        <p id="finalMessage">
-            Click the heart ❤️
-        </p>
-
-    </div>
-
-</section>
+</div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
