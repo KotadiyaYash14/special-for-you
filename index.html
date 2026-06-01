@@ -1,51 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Someone Special ❤️</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
 <body>
 
-    <div id="hearts-container"></div>
+<div id="hearts-container"></div>
 
-    <section class="hero">
+<!-- Welcome -->
+<section id="welcome" class="page active">
+    <div class="glass-card">
+        <h1>❤️ For N ❤️</h1>
+        <p>You make every day brighter.</p>
 
-        <div class="glass-card">
+        <button onclick="nextPage('teddy')">
+            Enter My Heart ❤️
+        </button>
+    </div>
+</section>
 
-            <h1>❤️ For My Special Person ❤️</h1>
+<!-- Teddy -->
+<section id="teddy" class="page">
+    <div class="glass-card">
+        <h2>🧸 Teddy Has A Surprise</h2>
 
-            <p class="subtitle">
-                Every heartbeat whispers your name...
-            </p>
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
+            class="teddy"
+            onclick="showTeddyMessage()"
+        >
 
-            <img
-                src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
-                alt="Teddy Bear"
-                class="teddy"
-            >
+        <p id="teddyMessage"></p>
 
-            <button class="love-btn" onclick="showLoveMessage()">
-                💌 Open My Heart
-            </button>
+        <button onclick="nextPage('balloon')">
+            Next 🎈
+        </button>
+    </div>
+</section>
 
-            <div id="message" class="message-box">
-                Click the button above ❤️
-            </div>
+<!-- Balloon -->
+<section id="balloon" class="page">
+    <div class="glass-card">
+        <h2>🎈 Pop The Balloons</h2>
+
+        <div id="balloonArea"></div>
+
+        <button onclick="nextPage('chocolate')">
+            Next 🍫
+        </button>
+    </div>
+</section>
+
+<!-- Chocolate -->
+<section id="chocolate" class="page">
+    <div class="glass-card">
+        <h2>🍫 Sweet Surprise</h2>
+
+        <div
+            class="chocolate-box"
+            onclick="openChocolate()">
+            🍫
+        </div>
+
+        <p id="chocoMessage"></p>
+
+        <button onclick="nextPage('candle')">
+            Next 🕯️
+        </button>
+    </div>
+</section>
+
+<!-- Candle -->
+<section id="candle" class="page">
+    <div class="glass-card">
+        <h2>🕯️ Light All Candles</h2>
+
+        <div id="candles">
+            <span class="candle" onclick="lightCandle(this)">🕯️</span>
+            <span class="candle" onclick="lightCandle(this)">🕯️</span>
+            <span class="candle" onclick="lightCandle(this)">🕯️</span>
+            <span class="candle" onclick="lightCandle(this)">🕯️</span>
+        </div>
+
+        <button onclick="nextPage('letter')">
+            Love Letter 💌
+        </button>
+    </div>
+</section>
+
+<!-- Letter -->
+<section id="letter" class="page">
+    <div class="glass-card">
+
+        <h2>💌 My Letter To You</h2>
+
+        <div id="letterText"></div>
+
+        <button onclick="nextPage('gallery')">
+            Gallery 📸
+        </button>
+
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="page">
+    <div class="glass-card">
+
+        <h2>📸 Memories</h2>
+
+        <div class="gallery">
+
+            <img src="assets/photo1.jpg">
+            <img src="assets/photo2.jpg">
+            <img src="assets/photo3.jpg">
 
         </div>
 
-    </section>
+        <button onclick="nextPage('final')">
+            Final Surprise ❤️
+        </button>
 
-    <footer>
-        Made with ❤️ Just For You
-    </footer>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- Final -->
+<section id="final" class="page">
+    <div class="glass-card">
+
+        <h1>❤️ N ❤️</h1>
+
+        <p>
+            Thank you for being part of my life.
+        </p>
+
+        <div
+            class="big-heart"
+            onclick="heartExplosion()">
+            ❤️
+        </div>
+
+    </div>
+</section>
+
+<script src="script.js"></script>
 
 </body>
-</html>
