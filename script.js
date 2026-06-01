@@ -70,47 +70,31 @@ function calculateDays() {
 calculateDays();
 
 // ============================
-// MUSIC — YouTube iframe toggle
-// "Jab Koi Baat Bigad Jaye" (Tum Dena Saath Mera) — Jurm 1990
-// Works by loading the iframe src on first play (avoids autoplay block)
+// MUSIC — local assets/song.mp3
 // ============================
 
 let musicPlaying = false;
-let musicLoaded  = false;
-
-const YT_SRC = "https://www.youtube.com/embed/E_mtmnptlTA?autoplay=1&loop=1&playlist=E_mtmnptlTA&controls=0&rel=0&modestbranding=1&enablejsapi=1";
 
 function toggleMusic() {
-    const frame  = document.getElementById('ytFrame');
-    const btn    = document.getElementById('musicBtn');
-    const icon   = document.getElementById('musicIcon');
-    const label  = document.getElementById('songLabel');
+    const music = document.getElementById('bgMusic');
+    const btn   = document.getElementById('musicBtn');
+    const icon  = document.getElementById('musicIcon');
+    const label = document.getElementById('songLabel');
 
-    if (!musicLoaded) {
-        // First tap — load the iframe src (triggers autoplay=1 after user gesture)
-        frame.src = YT_SRC;
-        musicLoaded  = true;
+    if (music.paused) {
+        music.play().catch(() => {
+            alert('Please place your song.mp3 inside the assets/ folder!');
+        });
         musicPlaying = true;
         btn.classList.add('playing');
         icon.textContent = '🎶';
         label.classList.add('visible');
-        return;
-    }
-
-    if (musicPlaying) {
-        // Pause: unload src to stop audio
-        frame.src = '';
+    } else {
+        music.pause();
         musicPlaying = false;
         btn.classList.remove('playing');
         icon.textContent = '🎵';
         label.classList.remove('visible');
-    } else {
-        // Resume
-        frame.src = YT_SRC;
-        musicPlaying = true;
-        btn.classList.add('playing');
-        icon.textContent = '🎶';
-        label.classList.add('visible');
     }
 }
 

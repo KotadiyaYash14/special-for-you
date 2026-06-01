@@ -9,20 +9,10 @@
 </head>
 <body>
 
-<!-- YouTube Music — Jab Koi Baat Bigad Jaye (Tum Dena Saath Mera) -->
-<!-- autoplay=1&mute=0 plays audio; loop=1 loops it -->
-<div style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;left:-9999px;top:-9999px">
-    <iframe
-        id="ytFrame"
-        src=""
-        data-src="https://www.youtube.com/embed/E_mtmnptlTA?autoplay=0&loop=1&playlist=E_mtmnptlTA&controls=0&enablejsapi=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        frameborder="0"
-        width="1" height="1"
-        title="music"
-    ></iframe>
-</div>
+<!-- Background Music — place your MP3 at assets/song.mp3 -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/song.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Animated Background Layers -->
 <div class="bg-gradient"></div>
