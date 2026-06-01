@@ -70,51 +70,47 @@ function calculateDays() {
 calculateDays();
 
 // ============================
-// MUSIC — YouTube IFrame API
-// "Tum Dena Saath Mera" by Stebin Ben
+// MUSIC — YouTube iframe toggle
+// "Jab Koi Baat Bigad Jaye" (Tum Dena Saath Mera) — Jurm 1990
+// Works by loading the iframe src on first play (avoids autoplay block)
 // ============================
 
-let ytPlayer = null;
 let musicPlaying = false;
+let musicLoaded  = false;
 
-// Called automatically by YouTube API when ready
-function onYouTubeIframeAPIReady() {
-    ytPlayer = new YT.Player('ytPlayer', {
-        height: '0',
-        width: '0',
-        // "Tum Dena Saath Mera" — Stebin Ben | Official Audio
-        videoId: 'YnopHCL1mrU',
-        playerVars: {
-            autoplay: 0,
-            loop: 1,
-            controls: 0,
-            playlist: 'YnopHCL1mrU'
-        },
-        events: {
-            onReady: () => {},
-            onStateChange: (e) => {
-                if (e.data === YT.PlayerState.PLAYING) {
-                    musicPlaying = true;
-                    document.getElementById('musicBtn').classList.add('playing');
-                    document.getElementById('musicIcon').textContent = '🎶';
-                    document.getElementById('songLabel').classList.add('visible');
-                } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
-                    musicPlaying = false;
-                    document.getElementById('musicBtn').classList.remove('playing');
-                    document.getElementById('musicIcon').textContent = '🎵';
-                    document.getElementById('songLabel').classList.remove('visible');
-                }
-            }
-        }
-    });
-}
+const YT_SRC = "https://www.youtube.com/embed/E_mtmnptlTA?autoplay=1&loop=1&playlist=E_mtmnptlTA&controls=0&rel=0&modestbranding=1&enablejsapi=1";
 
 function toggleMusic() {
-    if (!ytPlayer) return;
+    const frame  = document.getElementById('ytFrame');
+    const btn    = document.getElementById('musicBtn');
+    const icon   = document.getElementById('musicIcon');
+    const label  = document.getElementById('songLabel');
+
+    if (!musicLoaded) {
+        // First tap — load the iframe src (triggers autoplay=1 after user gesture)
+        frame.src = YT_SRC;
+        musicLoaded  = true;
+        musicPlaying = true;
+        btn.classList.add('playing');
+        icon.textContent = '🎶';
+        label.classList.add('visible');
+        return;
+    }
+
     if (musicPlaying) {
-        ytPlayer.pauseVideo();
+        // Pause: unload src to stop audio
+        frame.src = '';
+        musicPlaying = false;
+        btn.classList.remove('playing');
+        icon.textContent = '🎵';
+        label.classList.remove('visible');
     } else {
-        ytPlayer.playVideo();
+        // Resume
+        frame.src = YT_SRC;
+        musicPlaying = true;
+        btn.classList.add('playing');
+        icon.textContent = '🎶';
+        label.classList.add('visible');
     }
 }
 
