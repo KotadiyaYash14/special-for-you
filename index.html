@@ -1,23 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ For N ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
 
-<div id="hearts-container"></div>
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
-<!-- Welcome -->
+<div class="stars"></div>
+
+<!-- Welcome Section -->
+
 <section id="welcome" class="page active">
-    <div class="glass-card">
-        <h1>❤️ For N ❤️</h1>
-        <p>You make every day brighter.</p>
 
-        <button onclick="nextPage('teddy')">
+    <div class="glass-card">
+
+        <h1>❤️ For N ❤️</h1>
+
+        <p class="subtitle">
+            Every heartbeat whispers your name...
+        </p>
+
+        <p id="daysCounter"></p>
+
+        <button onclick="toggleMusic()" class="music-btn">
+            🎵 Play Music
+        </button>
+
+        <button onclick="nextPage('teddy')" class="main-btn">
             Enter My Heart ❤️
         </button>
+
     </div>
+
 </section>
 
-<!-- Teddy -->
+<!-- Teddy Section -->
+
 <section id="teddy" class="page">
+
     <div class="glass-card">
-        <h2>🧸 Teddy Has A Surprise</h2>
+
+        <h2>🧸 Teddy Has Something To Say</h2>
 
         <img
             src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
@@ -27,117 +59,147 @@
 
         <p id="teddyMessage"></p>
 
-        <button onclick="nextPage('balloon')">
-            Next 🎈
+        <button onclick="nextPage('balloons')" class="main-btn">
+            Continue 🎈
         </button>
+
     </div>
+
 </section>
 
-<!-- Balloon -->
-<section id="balloon" class="page">
+<!-- Balloon Game -->
+
+<section id="balloons" class="page">
+
     <div class="glass-card">
+
         <h2>🎈 Pop The Balloons</h2>
+
+        <p>Each balloon hides a special message ❤️</p>
 
         <div id="balloonArea"></div>
 
-        <button onclick="nextPage('chocolate')">
-            Next 🍫
+        <button onclick="nextPage('gift')" class="main-btn">
+            Next Surprise 🎁
         </button>
+
     </div>
+
 </section>
 
-<!-- Chocolate -->
-<section id="chocolate" class="page">
-    <div class="glass-card">
-        <h2>🍫 Sweet Surprise</h2>
+<!-- Gift Section -->
 
-        <div
-            class="chocolate-box"
-            onclick="openChocolate()">
-            🍫
+<section id="gift" class="page">
+
+    <div class="glass-card">
+
+        <h2>🎁 Open Your Gift</h2>
+
+        <div class="gift-box" onclick="openGift()">
+            🎁
         </div>
 
-        <p id="chocoMessage"></p>
+        <p id="giftMessage"></p>
 
-        <button onclick="nextPage('candle')">
-            Next 🕯️
+        <button onclick="nextPage('candles')" class="main-btn">
+            Light The Candles 🕯️
         </button>
+
     </div>
+
 </section>
 
-<!-- Candle -->
-<section id="candle" class="page">
+<!-- Candle Section -->
+
+<section id="candles" class="page">
+
     <div class="glass-card">
+
         <h2>🕯️ Light All Candles</h2>
 
-        <div id="candles">
+        <div class="candles">
+
             <span class="candle" onclick="lightCandle(this)">🕯️</span>
             <span class="candle" onclick="lightCandle(this)">🕯️</span>
             <span class="candle" onclick="lightCandle(this)">🕯️</span>
             <span class="candle" onclick="lightCandle(this)">🕯️</span>
+
         </div>
 
-        <button onclick="nextPage('letter')">
-            Love Letter 💌
+        <button onclick="nextPage('letter')" class="main-btn">
+            Read My Letter 💌
         </button>
+
     </div>
+
 </section>
 
-<!-- Letter -->
+<!-- Love Letter -->
+
 <section id="letter" class="page">
+
     <div class="glass-card">
 
-        <h2>💌 My Letter To You</h2>
+        <h2>💌 A Letter For N</h2>
 
         <div id="letterText"></div>
 
-        <button onclick="nextPage('gallery')">
-            Gallery 📸
+        <button onclick="nextPage('gallery')" class="main-btn">
+            See Memories 📸
         </button>
 
     </div>
+
 </section>
 
 <!-- Gallery -->
+
 <section id="gallery" class="page">
+
     <div class="glass-card">
 
-        <h2>📸 Memories</h2>
+        <h2>📸 Beautiful Memories</h2>
 
         <div class="gallery">
 
-            <img src="assets/photo1.jpg">
-            <img src="assets/photo2.jpg">
-            <img src="assets/photo3.jpg">
+            <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800">
+
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800">
+
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
 
         </div>
 
-        <button onclick="nextPage('final')">
+        <button onclick="nextPage('final')" class="main-btn">
             Final Surprise ❤️
         </button>
 
     </div>
+
 </section>
 
-<!-- Final -->
+<!-- Final Page -->
+
 <section id="final" class="page">
+
     <div class="glass-card">
 
         <h1>❤️ N ❤️</h1>
 
-        <p>
-            Thank you for being part of my life.
-        </p>
-
-        <div
-            class="big-heart"
-            onclick="heartExplosion()">
+        <div class="big-heart"
+             onclick="heartExplosion()">
             ❤️
         </div>
 
+        <p id="finalMessage">
+            Click the heart ❤️
+        </p>
+
     </div>
+
 </section>
 
 <script src="script.js"></script>
 
 </body>
+</html>
