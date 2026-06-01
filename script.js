@@ -288,7 +288,7 @@ Every memory with you is something I treasure deeply.
 
 I will always, always cherish you.
 
-Every day since 15 Aug 2024 has been more meaningful
+Every day since 01 Jan 2024 has been more meaningful
 because of you.
 
 Thank you for every laugh,
