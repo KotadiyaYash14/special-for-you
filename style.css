@@ -1,173 +1,122 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
+.page{
     min-height:100vh;
-    overflow-x:hidden;
-    background:
-        linear-gradient(
-            135deg,
-            #ff6ec4 0%,
-            #7873f5 100%
-        );
-    color:white;
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
+    display:none;
     justify-content:center;
     align-items:center;
     padding:20px;
 }
 
-.glass-card{
-    width:100%;
-    max-width:800px;
-
-    text-align:center;
-
-    padding:40px;
-
-    background:rgba(255,255,255,0.15);
-
-    border:1px solid rgba(255,255,255,0.2);
-
-    backdrop-filter:blur(20px);
-
-    border-radius:30px;
-
-    box-shadow:
-        0 8px 32px rgba(0,0,0,0.2);
+.page.active{
+    display:flex;
 }
 
-h1{
-    font-size:3rem;
-    margin-bottom:15px;
-}
-
-.subtitle{
-    font-size:1.2rem;
-    margin-bottom:25px;
-    opacity:.9;
-}
-
-.teddy{
-    width:250px;
-    max-width:100%;
-    animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-20px);
-    }
-}
-
-.love-btn{
-    margin-top:25px;
-
-    padding:15px 35px;
-
+button{
+    padding:15px 30px;
     border:none;
-
-    border-radius:50px;
-
-    font-size:18px;
-
+    border-radius:40px;
+    background:#ff4d8d;
+    color:white;
     cursor:pointer;
-
-    background:white;
-
-    color:#ff4d8d;
-
-    font-weight:600;
-
+    margin-top:20px;
+    font-size:16px;
     transition:.3s;
 }
 
-.love-btn:hover{
+button:hover{
     transform:scale(1.08);
 }
 
-.message-box{
+#balloonArea{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.pop-balloon{
+    font-size:60px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pop-balloon:hover{
+    transform:scale(1.2);
+}
+
+.chocolate-box{
+    font-size:120px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.chocolate-box:hover{
+    transform:rotate(10deg) scale(1.1);
+}
+
+#candles{
     margin-top:25px;
-
-    min-height:120px;
-
-    line-height:1.8;
-
-    font-size:1.1rem;
 }
 
-.heart{
-    position:fixed;
-    bottom:-50px;
-    animation:rise 8s linear forwards;
-    pointer-events:none;
+.candle{
+    font-size:70px;
+    cursor:pointer;
+    margin:10px;
+    display:inline-block;
 }
 
-@keyframes rise{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-110vh);
-        opacity:0;
-    }
+.lit{
+    filter:drop-shadow(0 0 20px gold);
+    transform:scale(1.2);
 }
 
-.balloon{
-    position:fixed;
-    bottom:-120px;
-    font-size:50px;
-    animation:balloonMove 12s linear forwards;
-}
-
-@keyframes balloonMove{
-    to{
-        transform:translateY(-130vh);
-    }
-}
-
-footer{
-    text-align:center;
+#letterText{
+    font-size:1.2rem;
+    line-height:2;
+    min-height:200px;
     padding:20px;
-    font-size:14px;
-    opacity:.8;
 }
 
-@media(max-width:768px){
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:25px;
+}
 
-    h1{
-        font-size:2rem;
-    }
+.gallery img{
+    width:100%;
+    border-radius:20px;
+    object-fit:cover;
+    height:250px;
+    transition:.4s;
+}
 
-    .subtitle{
-        font-size:1rem;
-    }
+.gallery img:hover{
+    transform:scale(1.05);
+}
 
-    .glass-card{
-        padding:25px;
-    }
+.big-heart{
+    font-size:120px;
+    cursor:pointer;
+    animation:pulse 1.5s infinite;
+}
 
-    .teddy{
-        width:180px;
-    }
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
 
-    .love-btn{
-        width:100%;
-    }
+.confetti{
+    position:fixed;
+    top:-20px;
+    font-size:25px;
+    animation:fall 4s linear forwards;
+}
 
-    .message-box{
-        font-size:1rem;
+@keyframes fall{
+    to{
+        transform:translateY(120vh);
     }
 }
