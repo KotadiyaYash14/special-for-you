@@ -51,7 +51,7 @@ function goToPage(index) {
 // ============================
 
 function calculateDays() {
-    const start = new Date("2024-08-15");
+    const start = new Date("2024-01-01");
     const today = new Date();
     const diff  = Math.floor((today - start) / (1000 * 60 * 60 * 24));
     const el    = document.getElementById("daysNumber");
