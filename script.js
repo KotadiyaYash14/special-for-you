@@ -1,97 +1,154 @@
-const messages = [
-    "From the moment you came into my life, everything became more beautiful ❤️",
+function nextPage(pageId){
 
-    "Your smile is my favorite view in the whole world ✨",
+    document
+        .querySelectorAll(".page")
+        .forEach(p=>p.classList.remove("active"));
 
-    "You are the reason my heart feels so alive 💖",
+    document
+        .getElementById(pageId)
+        .classList.add("active");
 
-    "Every day with you feels like a dream 🌹",
+    if(pageId==="letter"){
+        startLetter();
+    }
 
-    "I don't need perfect moments, I just need you ❤️",
-
-    "Thank you for being the most beautiful chapter of my life 💕"
-];
-
-function showLoveMessage() {
-
-    const messageBox =
-        document.getElementById("message");
-
-    const randomMessage =
-        messages[
-            Math.floor(
-                Math.random() * messages.length
-            )
-        ];
-
-    messageBox.innerHTML = "";
-
-    let i = 0;
-
-    const typing =
-        setInterval(() => {
-
-            messageBox.innerHTML +=
-                randomMessage.charAt(i);
-
-            i++;
-
-            if (i >= randomMessage.length) {
-                clearInterval(typing);
-            }
-
-        }, 40);
+    if(pageId==="balloon"){
+        createBalloons();
+    }
 }
 
-function createHeart() {
+function showTeddyMessage(){
 
-    const heart =
-        document.createElement("div");
-
-    heart.classList.add("heart");
-
-    heart.innerHTML = "❤️";
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        Math.random() * 20 + 20 + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
+    document.getElementById("teddyMessage").innerHTML=
+        "❤️ N, you make every day brighter and every moment more beautiful ❤️";
 }
 
-setInterval(createHeart, 300);
+function createBalloons(){
 
-function createBalloon() {
+    const area=document.getElementById("balloonArea");
 
-    const balloon =
-        document.createElement("div");
+    if(area.children.length>0) return;
 
-    balloon.classList.add("balloon");
+    const msgs=[
+        "❤️ You make every day brighter",
+        "🌹 Your smile is my favorite view",
+        "💕 Thank you for being part of my life",
+        "✨ Every memory with you is special",
+        "💖 I will always cherish you"
+    ];
 
-    const balloons =
-        ["🎈", "💖", "💕"];
+    msgs.forEach(msg=>{
 
-    balloon.innerHTML =
-        balloons[
-            Math.floor(
-                Math.random() * balloons.length
-            )
-        ];
+        const balloon=document.createElement("div");
 
-    balloon.style.left =
-        Math.random() * 100 + "vw";
+        balloon.className="pop-balloon";
 
-    document.body.appendChild(balloon);
+        balloon.innerHTML="🎈";
 
-    setTimeout(() => {
-        balloon.remove();
-    }, 12000);
+        balloon.onclick=()=>{
+
+            balloon.innerHTML="💥";
+
+            alert(msg);
+        };
+
+        area.appendChild(balloon);
+    });
 }
 
-setInterval(createBalloon, 2000);
+function openChocolate(){
+
+    document.getElementById("chocoMessage")
+        .innerHTML=
+        "🍫 Life is sweeter with you Priya ❤️";
+}
+
+let candleCount=0;
+
+function lightCandle(el){
+
+    if(el.classList.contains("lit")) return;
+
+    el.classList.add("lit");
+
+    candleCount++;
+
+    if(candleCount===4){
+
+        setTimeout(()=>{
+
+            alert(
+                "✨ All candles are glowing just like your smile ❤️"
+            );
+
+        },300);
+    }
+}
+
+function startLetter(){
+
+    const text=
+`
+Dear N ❤️
+
+You make every day brighter.
+
+Your smile is my favorite view.
+
+Thank you for being part of my life.
+
+Every memory with you is special.
+
+I will always cherish you.
+
+Forever Yours ❤️
+`;
+
+    const box=document.getElementById("letterText");
+
+    if(box.innerHTML!=="") return;
+
+    let i=0;
+
+    const type=setInterval(()=>{
+
+        box.innerHTML+=text.charAt(i);
+
+        i++;
+
+        if(i>=text.length){
+
+            clearInterval(type);
+        }
+
+    },35);
+}
+
+function heartExplosion(){
+
+    for(let i=0;i<100;i++){
+
+        const confetti=
+            document.createElement("div");
+
+        confetti.className="confetti";
+
+        confetti.innerHTML=
+            ["❤️","💕","💖","🎉"][Math.floor(Math.random()*4)];
+
+        confetti.style.left=
+            Math.random()*100+"vw";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+
+            confetti.remove();
+
+        },4000);
+    }
+
+    alert(
+        "❤️ N ❤️\n\nThank you for being part of my life.\nYou are truly special to me."
+    );
+}
