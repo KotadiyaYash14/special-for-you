@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-    <!-- Free romantic piano music from Pixabay (no copyright) -->
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<!-- YouTube Music Player — Tum Dena Saath Mera -->
+<!-- Hidden iframe; controlled via YouTube IFrame API -->
+<div id="ytPlayerWrap" style="display:none">
+    <div id="ytPlayer"></div>
+</div>
 
 <!-- Animated Background Layers -->
 <div class="bg-gradient"></div>
@@ -22,9 +22,10 @@
 <div class="bokeh-layer"></div>
 
 <!-- Music Toggle -->
-<button class="music-fab" onclick="toggleMusic()" id="musicBtn" title="Toggle Music">
+<button class="music-fab" onclick="toggleMusic()" id="musicBtn" title="Tum Dena Saath Mera — Stebin Ben">
     <span id="musicIcon">🎵</span>
 </button>
+<div class="song-label" id="songLabel">🎵 Tum Dena Saath Mera</div>
 
 <!-- Page Dots Navigation -->
 <nav class="page-dots" id="pageDots">
@@ -261,6 +262,7 @@
     </div>
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
 </body>
 </html>

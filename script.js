@@ -30,7 +30,9 @@ function goToPage(index) {
     const target = document.getElementById('page-' + index);
     if (target) {
         target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll the card itself back to top
+        const card = target.querySelector('.card');
+        if (card) card.scrollTop = 0;
     }
 
     // Update dots
@@ -68,25 +70,51 @@ function calculateDays() {
 calculateDays();
 
 // ============================
-// MUSIC
+// MUSIC — YouTube IFrame API
+// "Tum Dena Saath Mera" by Stebin Ben
 // ============================
 
+let ytPlayer = null;
 let musicPlaying = false;
 
+// Called automatically by YouTube API when ready
+function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('ytPlayer', {
+        height: '0',
+        width: '0',
+        // "Tum Dena Saath Mera" — Stebin Ben | Official Audio
+        videoId: 'YnopHCL1mrU',
+        playerVars: {
+            autoplay: 0,
+            loop: 1,
+            controls: 0,
+            playlist: 'YnopHCL1mrU'
+        },
+        events: {
+            onReady: () => {},
+            onStateChange: (e) => {
+                if (e.data === YT.PlayerState.PLAYING) {
+                    musicPlaying = true;
+                    document.getElementById('musicBtn').classList.add('playing');
+                    document.getElementById('musicIcon').textContent = '🎶';
+                    document.getElementById('songLabel').classList.add('visible');
+                } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+                    musicPlaying = false;
+                    document.getElementById('musicBtn').classList.remove('playing');
+                    document.getElementById('musicIcon').textContent = '🎵';
+                    document.getElementById('songLabel').classList.remove('visible');
+                }
+            }
+        }
+    });
+}
+
 function toggleMusic() {
-    const music = document.getElementById('bgMusic');
-    const btn   = document.getElementById('musicBtn');
-    const icon  = document.getElementById('musicIcon');
-    if (music.paused) {
-        music.play().catch(() => {});
-        musicPlaying = true;
-        btn.classList.add('playing');
-        icon.textContent = '🎶';
+    if (!ytPlayer) return;
+    if (musicPlaying) {
+        ytPlayer.pauseVideo();
     } else {
-        music.pause();
-        musicPlaying = false;
-        btn.classList.remove('playing');
-        icon.textContent = '🎵';
+        ytPlayer.playVideo();
     }
 }
 
@@ -350,20 +378,33 @@ document.addEventListener('keydown', e => {
 // SWIPE NAVIGATION (mobile)
 // ============================
 
-let touchStartX = 0, touchStartY = 0;
+let touchStartX = 0, touchStartY = 0, touchStartCardScroll = 0;
 
 document.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
     touchStartY = e.changedTouches[0].screenY;
-});
+    // Record card's current scroll position
+    const card = document.querySelector('.page.active .card');
+    touchStartCardScroll = card ? card.scrollTop : 0;
+}, { passive: true });
 
 document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].screenX - touchStartX;
     const dy = e.changedTouches[0].screenY - touchStartY;
-    if (Math.abs(dx) < 40 && Math.abs(dy) < 60) return; // too small
+    if (Math.abs(dx) < 40 && Math.abs(dy) < 80) return; // too small
+
+    const card = document.querySelector('.page.active .card');
+    const cardScroll = card ? card.scrollTop : 0;
+    const cardScrollHeight = card ? (card.scrollHeight - card.clientHeight) : 0;
+
     if (Math.abs(dy) > Math.abs(dx)) {
-        // vertical swipe
-        if (dy < -50) goToPage(currentPage + 1); // swipe up → next
-        if (dy > 50)  goToPage(currentPage - 1); // swipe down → prev
+        if (dy < -80) {
+            // Swipe up = next page — only if card is scrolled to bottom (or no overflow)
+            if (cardScroll >= cardScrollHeight - 5) goToPage(currentPage + 1);
+        }
+        if (dy > 80) {
+            // Swipe down = prev page — only if card is at top
+            if (cardScroll <= 5) goToPage(currentPage - 1);
+        }
     }
-});
+}, { passive: true });
