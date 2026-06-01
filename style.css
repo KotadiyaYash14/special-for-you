@@ -744,27 +744,36 @@ body {
 }
 
 /* ============================
-   GALLERY
+   GALLERY — 4 personal images
+   Layout: 2 tall on top, 2 wide on bottom
    ============================ */
 
 .gallery-masonry {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 160px;
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 260px 180px;
+    gap: 14px;
     margin: 20px 0;
 }
 
+/* All 4 items — tall ones span full row height, short ones the second row */
 .gallery-item {
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    animation: galleryReveal .5s ease var(--delay) both;
+    animation: galleryReveal .55s ease var(--delay) both;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
+/* Top two items are tall */
 .gallery-item.tall {
-    grid-row: span 2;
+    grid-row: 1;
+}
+
+/* Bottom two items sit in row 2 */
+.gallery-item:not(.tall) {
+    grid-row: 2;
 }
 
 @keyframes galleryReveal {
@@ -885,11 +894,13 @@ body {
     .page { padding: 16px 50px 16px 16px; }
 
     .gallery-masonry {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 130px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 190px 140px;
+        gap: 10px;
     }
 
-    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.tall { grid-row: 1; }
+    .gallery-item:not(.tall) { grid-row: 2; }
 
     .page-dots { right: 8px; }
     .dot { width: 22px; height: 22px; font-size: 9px; }
