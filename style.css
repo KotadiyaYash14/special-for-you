@@ -2,39 +2,64 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
     min-height:100vh;
-    overflow:hidden;
-    font-family:'Segoe UI',sans-serif;
-}
-
-.container{
-    text-align:center;
-    padding-top:50px;
-}
-
-.title{
+    overflow-x:hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #ff6ec4 0%,
+            #7873f5 100%
+        );
     color:white;
-    font-size:3rem;
-    margin-bottom:20px;
-    animation: glow 2s infinite alternate;
 }
 
-@keyframes glow{
-    from{
-        text-shadow:0 0 10px white;
-    }
-    to{
-        text-shadow:0 0 25px red;
-    }
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.glass-card{
+    width:100%;
+    max-width:800px;
+
+    text-align:center;
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.15);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.2);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    margin-bottom:25px;
+    opacity:.9;
 }
 
 .teddy{
     width:250px;
-    animation: float 3s ease-in-out infinite;
+    max-width:100%;
+    animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
@@ -46,68 +71,103 @@ body{
     }
 }
 
-.message-box{
-    width:80%;
-    max-width:700px;
-    margin:30px auto;
+.love-btn{
+    margin-top:25px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
     background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+    color:#ff4d8d;
+
+    font-weight:600;
+
+    transition:.3s;
 }
 
-#message{
-    font-size:1.5rem;
-    color:#ff4d6d;
-    min-height:80px;
+.love-btn:hover{
+    transform:scale(1.08);
 }
 
-.balloon{
-    width:80px;
-    height:100px;
-    border-radius:50%;
-    position:absolute;
-    animation: rise 8s linear infinite;
+.message-box{
+    margin-top:25px;
+
+    min-height:120px;
+
+    line-height:1.8;
+
+    font-size:1.1rem;
 }
 
-.balloon1{
-    background:red;
-    left:10%;
-}
-
-.balloon2{
-    background:pink;
-    left:80%;
-    animation-delay:2s;
-}
-
-.balloon3{
-    background:purple;
-    left:50%;
-    animation-delay:4s;
+.heart{
+    position:fixed;
+    bottom:-50px;
+    animation:rise 8s linear forwards;
+    pointer-events:none;
 }
 
 @keyframes rise{
     from{
-        bottom:-150px;
+        transform:translateY(0);
+        opacity:1;
     }
     to{
-        bottom:110%;
+        transform:translateY(-110vh);
+        opacity:0;
     }
 }
 
-.heart{
-    position:absolute;
-    color:red;
-    font-size:25px;
-    animation: fly 8s linear infinite;
+.balloon{
+    position:fixed;
+    bottom:-120px;
+    font-size:50px;
+    animation:balloonMove 12s linear forwards;
 }
 
-@keyframes fly{
-    from{
-        transform:translateY(100vh);
-    }
+@keyframes balloonMove{
     to{
-        transform:translateY(-100px);
+        transform:translateY(-130vh);
+    }
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    opacity:.8;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
+
+    .glass-card{
+        padding:25px;
+    }
+
+    .teddy{
+        width:180px;
+    }
+
+    .love-btn{
+        width:100%;
+    }
+
+    .message-box{
+        font-size:1rem;
     }
 }

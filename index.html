@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>For Someone Special ❤️</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
 
-    <div class="hearts"></div>
+    <div id="hearts-container"></div>
 
-    <div class="container">
+    <section class="hero">
 
-        <h1 class="title"></h1>
+        <div class="glass-card">
 
-        <img src="teddy.png" class="teddy" alt="Teddy">
+            <h1>❤️ For My Special Person ❤️</h1>
 
-        <div class="balloon balloon1"></div>
-        <div class="balloon balloon2"></div>
-        <div class="balloon balloon3"></div>
+            <p class="subtitle">
+                Every heartbeat whispers your name...
+            </p>
 
-        <div class="message-box">
-            <p id="message"></p>
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
+                alt="Teddy Bear"
+                class="teddy"
+            >
+
+            <button class="love-btn" onclick="showLoveMessage()">
+                💌 Open My Heart
+            </button>
+
+            <div id="message" class="message-box">
+                Click the button above ❤️
+            </div>
+
         </div>
 
-    </div>
+    </section>
+
+    <footer>
+        Made with ❤️ Just For You
+    </footer>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
