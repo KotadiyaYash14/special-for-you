@@ -147,7 +147,7 @@ function showTeddyMessage() {
     teddySaid = true;
 
     const lines = [
-        "❤️ N ❤️",
+        "❤️ Nandini ❤️",
         "",
         "You make every day brighter.",
         "Your smile is my favourite view.",
@@ -276,7 +276,7 @@ function startLetter() {
     letterStarted = true;
 
     const letterContent =
-`Dear N ❤️
+`Dear Nandini ❤️
 
 You make every day brighter.
 
@@ -320,7 +320,7 @@ function heartExplosion() {
     const msg = document.getElementById('finalMessage');
     msg.classList.remove('hidden');
     msg.innerHTML =
-        `❤️ N ❤️<br><br>
+        `❤️ Nandini ❤️<br><br>
         You make every day brighter.<br>
         Your smile is my favourite view.<br>
         Thank you for being part of my life.<br>
